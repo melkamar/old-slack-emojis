@@ -1,71 +1,20 @@
 # Old Slack Emojis
 
-Bring back old emojis to new Slack!
+Bring back Android emojis to Slack on Mac!
 
-## What is this?
-In February 2018, Slack pushed a change making Google emojis used on all platforms except macOS, instead of the older Apple emojis.
+Forked from [IvyBits's old-slack-emojis](https://github.com/IvyBits/old-slack-emojis). The original project restores Apple emojis, this project does the same but with Google emojis.
 
-On macOS, emojis have been instead switched to the newer iOS 10.2 style, instead of the original iOS 6 style.
+## What?
+Slack used to offer an option to choose which set of emojis to use in their desktop client. For some 
+reason, however, they removed that option and forced Mac users to use the clearly inferior Apple-style emojis.
 
-### Before change
+This fork uses a [Google emoji spritesheet](https://github.com/iamcal/emoji-data/raw/master/sheets-indexed-256/sheet_google_64_indexed_256.png)
+and restores the Slack emojis to their former glory.
 
-![](https://i.imgur.com/oQYpzcH.png)
+## Issues, troubleshooting, etc
+If you find any issues or need help, please refer to the original project.
 
-### After change
-
-![](https://i.imgur.com/46NPVv2.png)
-
-This patch reverses this change, and brings back the loveable classic Apple emojis to new Slack clients.
-
-## Installation
-Installation varies depending on if you're using the Slack webapp or desktop client. A patch for mobile app versions of Slack is not
-within the scope of this project.
-
-### Browser client
-
-For browser clients, install an extension like Stylish ([Firefox](https://addons.mozilla.org/en-US/firefox/addon/stylish/),
-[Chrome](https://chrome.google.com/webstore/detail/stylish-custom-themes-for/fjnbnpbmkenffdnngjfgmeleoegfcffe?hl=en)),
-and install [this](https://userstyles.org/styles/155342/old-slack-emojis) style.
-
-### Desktop client
-#### Linux and Mac
-Quick & dirty:
-
-```shell
-curl -sSL https://old-slack-emojis.cf | sudo bash
-```
-
-Alternatively, you can download and run
-[the installation script](https://raw.githubusercontent.com/IvyBits/old-slack-emojis/master/old-slack-emojis.sh) from this repository.
-
-#### Windows
-Download and run [the installation script](https://raw.githubusercontent.com/IvyBits/old-slack-emojis/master/old-slack-emojis.bat)
-from this repository.
-
-The script won't work with the Windows Store version of the Slack app. The Windows Store version is write-protected and can't be
-injected by this script. The version downloaded [from Slack's website](https://slack.com/downloads/windows)
-should, however, work.
-
-## Uninstallation
-To uninstall, run the appropriate script with `-u` as a flag.
-
-## Updating Slack
-old-slack-emojis injects some code into the Slack client, which may be overwritten when Slack updates. If you start seeing the new
-emojis, rerunning the installation script should fix things.
-
-## "Cannot find Slack installation"
-
-If you've installed Slack in some exotic place, the script might not find the installation by itself or it might find the
-wrong installation. In such cases, you need to specify the location of Slack's `app.asar.unpacked/src/static` folder as a parameter:
-
-```shell
-sudo bash old-slack-emojis.sh /My_Apps/Slack.app/Contents/Resources/app.asar.unpacked/src/static
-```
-
-```shell
-old-slack-emojis.bat E:\My_Apps\slack\app-2.5.1\resources\app.asar.unpacked\src\static
-```
-
-## Credits
-old-slack-emojis uses the same injection mechanism as [math-with-slack](https://github.com/fsavje/math-with-slack), without which
-a lot more time would have gone into figuring out how to get the old spritesheet injected. Thanks!
+## Customization
+To customize which emojis to use, edit the [old-slack-emojis.sh](old-slack-emojis.sh) script, namely
+the URL in `background-image`. You can supply any spritesheet to that url, but [here](https://github.com/iamcal/emoji-data/tree/master/sheets-indexed-256) is a nice 
+starting list.
